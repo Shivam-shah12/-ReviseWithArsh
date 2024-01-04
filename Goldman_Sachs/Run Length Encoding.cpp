@@ -1,4 +1,6 @@
-
+#include <iostream>
+#include <string>
+using namespace std;
 string encode(string src){ 
        //Your code here 
         string ans = "";
