@@ -1,0 +1,21 @@
+class Solution {
+public:
+    static bool comp(const string &a,const string &b){
+        return a.length()>b.length();
+    }
+    int minimumLengthEncoding(vector<string>& words) {
+        sort(words.begin(),words.end(),comp);
+        unordered_map<string,int>u1;
+        for(auto &i:words)u1[i]++;
+        int ans=0;
+        for(auto &i:words){
+            if(u1[i]>0){
+                for(int j=0;j<i.length();j++){
+                    if(u1[i.substr(j)]>0)u1[i.substr(j)]=0;
+                }
+                ans+=i.length()+1;
+            }
+        }
+        return ans;
+    }
+};
